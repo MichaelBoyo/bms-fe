@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
 
-import { url } from "@/services/auth";
+import { BACKEND_URL } from "@/services/auth";
 // Configure NextAuth with authentication options
 export default NextAuth({
   // Session configuration using JWT (JSON Web Token) strategy
@@ -27,7 +27,7 @@ export default NextAuth({
       // Authorize function handles authentication logic with provided credentials
       async authorize(credentials, req) {
         // Make a POST request to the authentication endpoint with the provided credentials
-        const res = await axios.post(url + "/auth/login", credentials);
+        const res = await axios.post(BACKEND_URL + "/auth/login", credentials);
         const user = res.data;
 
         // If no error and we have user data, return it as the authenticated user

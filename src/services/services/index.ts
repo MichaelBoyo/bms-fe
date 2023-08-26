@@ -11,7 +11,7 @@ import {
 } from "@/types/services/service";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getSession } from "next-auth/react";
-
+import { BACKEND_URL } from "../auth";
 // Helper function to create a POST request configuration
 const postRequest = (url: string, details: unknown) => ({
   url,
@@ -23,15 +23,13 @@ const postRequest = (url: string, details: unknown) => ({
 const getRequest = (url: string) => ({
   url,
 });
-const url = "https://bms-api.up.railway.app/api/booking-mgt/v1";
-const url3 =
-  "https://booking-management-production.up.railway.app/api/booking-mgt/v1";
+
 // Create the service API using createApi from Redux Toolkit
 export const service = createApi({
   reducerPath: "service",
   tagTypes: ["Service"], // Tags for cache invalidation
   baseQuery: fetchBaseQuery({
-    baseUrl: url, // Base URL for API requests
+    baseUrl: BACKEND_URL, // Base URL for API requests
     prepareHeaders: async (headers) => {
       // By default, if we have a token in next auth session, let's use that for authenticated requests
       const session = await getSession();

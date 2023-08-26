@@ -14,13 +14,13 @@ const postRequest = (url: string, details: unknown) => ({
     method: "POST",
     body: details,
 });
-export const url = "https://bms-api.up.railway.app/api/booking-mgt/v1";
+export const c = "https://bms-api.up.railway.app/api/booking-mgt/v1";
 
 // Creating an API using the 'createApi' function
 export const auth = createApi({
     reducerPath: "auth", // The slice name for this API in the Redux store
     baseQuery: fetchBaseQuery({
-        baseUrl: url, // The base URL for the API requests
+        baseUrl: BACKEND_URL, // The base URL for the API requests
     }),
     endpoints: (builder) => ({
         // Defining a 'signup' mutation endpoint
